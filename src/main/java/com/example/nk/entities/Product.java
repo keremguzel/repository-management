@@ -13,6 +13,15 @@ public class Product {
   private Date entryDate;
   private Date exitDate;
 
+  public Product() {
+  }
+
+  public Product(String name, Integer productNumber, String imagePath) {
+    this.name = name;
+    this.productNumber = productNumber;
+    this.imagePath = imagePath;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   public Long getId() {
