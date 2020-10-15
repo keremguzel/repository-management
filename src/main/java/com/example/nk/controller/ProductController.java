@@ -3,7 +3,14 @@ package com.example.nk.controller;
 import com.example.nk.entities.Product;
 import com.example.nk.repository.ProductRepository;
 import com.example.nk.service.ProductService;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.util.JsonParserSequence;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,9 +55,8 @@ public class ProductController {
     return productService.getOneProduct(id);
   }
 
-  @RequestMapping(value = "/search", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
-      consumes = MediaType.APPLICATION_JSON_VALUE)
-  ResponseEntity<List<Product>> editProduct(@RequestBody String product) {
-    return productService.getSearchedProducts(product);
+  @RequestMapping(value = "/search/{name}", method = RequestMethod.GET)
+    ResponseEntity<List<Product>> editProduct(@PathVariable String name){
+    return productService.getSearchedProducts(name);
   }
 }
