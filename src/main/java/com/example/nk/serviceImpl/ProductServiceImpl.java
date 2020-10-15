@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -38,5 +39,15 @@ public class ProductServiceImpl implements ProductService {
   public ResponseEntity<Product> deleteProduct(Long id) {
    productRepository.deleteById(id);
   return new  ResponseEntity<>(HttpStatus.OK);
+  }
+
+  @Override
+  public ResponseEntity<List<Product>> getAllProducts() {
+    return new ResponseEntity<List<Product>>(productRepository.findAll(),HttpStatus.OK);
+  }
+
+  @Override
+  public ResponseEntity<Product> getOneProduct(Long id) {
+    return new ResponseEntity<Product>(productRepository.findById(id).get(),HttpStatus.OK);
   }
 }

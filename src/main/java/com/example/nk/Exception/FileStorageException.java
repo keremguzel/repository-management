@@ -5,7 +5,10 @@ public class FileStorageException extends RuntimeException {
   private String msg;
 
   public FileStorageException(String msg) {
-    this.msg = msg;
+    super(msg);
+  }
+  public FileStorageException(String msg,Throwable cause) {
+    super(msg,cause);
   }
 
   public String getMsg() {
