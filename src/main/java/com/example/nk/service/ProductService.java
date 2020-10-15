@@ -11,4 +11,5 @@ public interface ProductService {
   ResponseEntity<Product> deleteProduct(Long id);
   ResponseEntity<List<Product>> getAllProducts();
   ResponseEntity<Product> getOneProduct(Long id);
+  ResponseEntity<List<Product>> getSearchedProducts(String product);
 }

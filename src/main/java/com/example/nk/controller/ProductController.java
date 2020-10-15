@@ -48,4 +48,9 @@ public class ProductController {
     return productService.getOneProduct(id);
   }
 
+  @RequestMapping(value = "/search", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+      consumes = MediaType.APPLICATION_JSON_VALUE)
+  ResponseEntity<List<Product>> editProduct(@RequestBody String product) {
+    return productService.getSearchedProducts(product);
+  }
 }

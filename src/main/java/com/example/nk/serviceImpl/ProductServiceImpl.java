@@ -50,4 +50,9 @@ public class ProductServiceImpl implements ProductService {
   public ResponseEntity<Product> getOneProduct(Long id) {
     return new ResponseEntity<Product>(productRepository.findById(id).get(),HttpStatus.OK);
   }
+
+  @Override
+  public ResponseEntity<List<Product>> getSearchedProducts(String product) {
+    return new ResponseEntity<List<Product>>(productRepository.searchByProductName(product),HttpStatus.OK);
+  }
 }
